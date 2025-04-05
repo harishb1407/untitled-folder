@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Job Monitor</title>
+  <style>
+    body {
+      width: 300px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 15px;
+    }
+    .header-left {
+      display: flex;
+      align-items: center;
+    }
+    .header img {
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+    }
+    .status {
+      display: flex;
+      align-items: center;
+      font-size: 0.9em;
+      padding: 4px 8px;
+      border-radius: 12px;
+      cursor: pointer;
+    }
+    .status.online {
+      background-color: #e6f4ea;
+      color: #137333;
+    }
+    .status.offline {
+      background-color: #fce8e6;
+      color: #c5221f;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+    .status.online .status-dot {
+      background-color: #137333;
+    }
+    .status.offline .status-dot {
+      background-color: #c5221f;
+    }
+    .settings {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #eee;
+    }
+    .job-list {
+      max-height: 300px;
+      overflow-y: auto;
+      margin: 10px 0;
+    }
+    .job-item {
+      padding: 8px;
+      border: 1px solid #eee;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    .job-item:hover {
+      background-color: #f5f5f5;
+    }
+    .job-title {
+      font-weight: bold;
+      color: #1a73e8;
+    }
+    .job-meta {
+      font-size: 0.8em;
+      color: #666;
+    }
+    button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background: #1557b0;
+    }
+    .last-check {
+      font-size: 0.8em;
+      color: #666;
+      margin-top: 10px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-left">
+      <img src="../icons/icon48.png" alt="Logo">
+      <h2>Job Monitor</h2>
+    </div>
+    <div id="status" class="status offline">
+      <div class="status-dot"></div>
+      <span>Offline</span>
+    </div>
+  </div>
+
+  <div class="job-list">
+    <div id="jobs-container">
+      <p>Loading jobs...</p>
+    </div>
+  </div>
+
+  <div class="settings">
+    <h3>Settings</h3>
+    <div>
+      <label>
+        <input type="checkbox" id="notifyBrowser" checked>
+        Browser Notifications
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="checkbox" id="openNewTabs" checked>
+        Open New Jobs in Tabs
+      </label>
+    </div>
+    <div style="margin-top: 10px;">
+      <button id="saveSettings">Save Settings</button>
+    </div>
+  </div>
+
+  <div class="last-check" id="lastCheck"></div>
+
+  <script type="module" src="popup.js"></script>
+</body>
+</html>
